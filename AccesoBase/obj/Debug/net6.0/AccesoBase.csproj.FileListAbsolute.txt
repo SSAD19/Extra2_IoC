@@ -1,0 +1,12 @@
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\bin\Debug\net6.0\AccesoBase.deps.json
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\bin\Debug\net6.0\AccesoBase.dll
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\bin\Debug\net6.0\AccesoBase.pdb
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.csproj.AssemblyReference.cache
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.AssemblyInfoInputs.cache
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.AssemblyInfo.cs
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.csproj.CoreCompileInputs.cache
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.dll
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\refint\AccesoBase.dll
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.pdb
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\ref\AccesoBase.dll
