@@ -13,7 +13,7 @@ namespace extradosClase4
 
             AgregarUsuario();
             AgregarUsuario();
-            AgregarUsuario();
+           
 
 
             variosUsuarios = ListarUsuario();
@@ -24,6 +24,14 @@ namespace extradosClase4
                 i++; 
                 Console.WriteLine($" Usuario {i} ={usuario.Nombre}");
             }
+
+            Console.WriteLine("Ingrese el ID del usuario a buscar : ");
+            int idUser = int.Parse(Console.ReadLine());
+
+            Usuario verUno = new Usuario();
+            verUno = verUsuario(idUser);
+           
+            Console.WriteLine($" Usuario {verUno.Id} = {verUno.Nombre}, {verUno.Apellido}, {verUno.Edad}");
 
 
             //traer listado de productos  
@@ -68,6 +76,18 @@ namespace extradosClase4
                 }
             }
 
+            static Usuario verUsuario(int _id)
+            {
+                using (var conexion = new AccesoDB())
+                {
+                    string comando = "select * from Usuario where id=@Id";
+
+                    var conexion2 = conexion.GetConnection();
+                    var usuario = conexion2.QuerySingleOrDefault<Usuario>(comando, new { Id = _id });
+
+                    return usuario;
+                }
+            }
 
 
 
