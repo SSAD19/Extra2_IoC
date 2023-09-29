@@ -561,6 +561,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Dapper": "2.0.151",
+          "Entidades": "1.0.0",
           "MySql.Data": "8.1.0"
         },
         "compile": {

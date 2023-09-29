@@ -555,6 +555,16 @@
         "runtime": {
           "lib/net6.0/ZstdSharp.dll": {}
         }
+      },
+      "Entidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Entidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entidades.dll": {}
+        }
       }
     }
   },
@@ -1808,11 +1818,17 @@
         "zstdsharp.port.0.7.1.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
+    },
+    "Entidades/1.0.0": {
+      "type": "project",
+      "path": "../Entidades/Entidades.csproj",
+      "msbuildProject": "../Entidades/Entidades.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Dapper >= 2.0.151",
+      "Entidades >= 1.0.0",
       "MySql.Data >= 8.1.0"
     ]
   },
@@ -1842,7 +1858,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Dell\\source\\repos\\extradosClase4\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\Dell\\source\\repos\\extradosClase4\\Entidades\\Entidades.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -27,7 +27,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Dell\\source\\repos\\extradosClase4\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Dell\\source\\repos\\extradosClase4\\Entidades\\Entidades.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

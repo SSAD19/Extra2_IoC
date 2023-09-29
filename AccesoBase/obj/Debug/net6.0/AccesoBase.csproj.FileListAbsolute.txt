@@ -10,3 +10,6 @@ C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase
 C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\refint\AccesoBase.dll
 C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.pdb
 C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\ref\AccesoBase.dll
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\bin\Debug\net6.0\Entidades.dll
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\bin\Debug\net6.0\Entidades.pdb
+C:\Users\Dell\source\repos\extradosClase4\AccesoBase\obj\Debug\net6.0\AccesoBase.csproj.CopyComplete

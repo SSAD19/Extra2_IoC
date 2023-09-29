@@ -11,10 +11,10 @@ namespace extradosClase4
         {
              List<Usuario> variosUsuarios = new List<Usuario>();
 
+
             AgregarUsuario();
             AgregarUsuario();
            
-
 
             variosUsuarios = ListarUsuario();
 
@@ -33,59 +33,84 @@ namespace extradosClase4
            
             Console.WriteLine($" Usuario {verUno.Id} = {verUno.Nombre}, {verUno.Apellido}, {verUno.Edad}");
 
+            Console.WriteLine("Ingrese el ID del usuario a eliminar : "); //baja lógica
+            idUser = int.Parse(Console.ReadLine());
+            BajaUsuario(idUser);
+
+            Console.WriteLine("Gracias por utilizar  nuetsro sistema.");
 
             //traer listado de productos  
 
+            //Alta 
+            void AgregarUsuario()
+            {
+                
+                Console.WriteLine("Nombre del usuario: ");
+                string nombre = Console.ReadLine();
+                Console.WriteLine("Apellido del usuario: ");
+                string apellido = Console.ReadLine();
+                Console.WriteLine("Edad del usuario: ");
+                int edad = int.Parse(Console.ReadLine());
 
+                Usuario userNuevo = new Usuario(nombre, apellido, edad, true);
 
-            static void AgregarUsuario() {
                 using (var conexion = new AccesoDB())
                 {
-
-                    var conexion2 = conexion.GetConnection();
-                        Console.WriteLine("Nombre del usuario: ");
-                        string nombre = Console.ReadLine();
-                        Console.WriteLine("Apellido del usuario: ");
-                        string apellido = Console.ReadLine();
-                        Console.WriteLine("Edad del usuario: ");
-                        int edad = int.Parse(Console.ReadLine());
-
-                        Usuario userNuevo = new Usuario(nombre, apellido, edad);
+                    // llamar metodo 
+                   conexion.AgregarUsuario(userNuevo, conexion); 
+                   Console.WriteLine("Se agregó un nuevo usuario");
+                }
+            }
 
 
-                        var comando = "INSERT INTO Usuario (nombre, apellido, edad) VALUES (@Nombre, @Apellido, @Edad)";
+            // baja logica 
+            void BajaUsuario(int _id)
+            {
+                using (var conexion = new AccesoDB())
+                {
+                  conexion.bajaLogica(_id, conexion);
 
-                        conexion2.Execute(comando, userNuevo);
+                }
+            }
 
-                        Console.WriteLine("Se agregó un nuevo usuario"); 
+            //modificar Usuario
+            void ModifUsuario(Usuario userNuevo)
+            {
+
+                Console.WriteLine($"Nombre del usuario:{userNuevo.Nombre}.Indique nuevo nombre:");
+                userNuevo.Nombre = Console.ReadLine();
+                Console.WriteLine($"Apellido del usuario:{userNuevo.Apellido}. Indique nuevo apellido: ");
+                userNuevo.Apellido = Console.ReadLine();
+                Console.WriteLine($"Edad del usuario: {userNuevo.Edad}. Indique nueva edad:");
+                userNuevo.Edad = int.Parse(Console.ReadLine());
+
+
+                using (var conexion = new AccesoDB())
+                {
+                    // llamar metodo 
+                    conexion.ModificarUser(userNuevo, conexion);
+
+                    Console.WriteLine($"Se modificó el usuario {userNuevo.Id} - {userNuevo.Nombre} ");
+                }
+            }
+
+            //consultar listado
+
+            List<Usuario> ListarUsuario()
+            {
+                using (var conexion = new AccesoDB())
+                {
+                    return conexion.ListarUsuario(conexion);
+                }
+            }
+
+            //consultar un usuario
+            Usuario verUsuario(int _id)
+            {
+                using (var conexion = new AccesoDB())
+                {
+                  return  conexion.VerUser(_id, conexion);
                     
-                }
-            }
-
-
-           static List<Usuario>  ListarUsuario()
-            {
-                using (var conexion = new AccesoDB())
-                {
-                         string comando = "select * from Usuario";
-
-                        var conexion2 = conexion.GetConnection(); 
-                        var usuarios = conexion2.Query<Usuario>(comando).ToList();
-
-                        return usuarios;
-                }
-            }
-
-            static Usuario verUsuario(int _id)
-            {
-                using (var conexion = new AccesoDB())
-                {
-                    string comando = "select * from Usuario where id=@Id";
-
-                    var conexion2 = conexion.GetConnection();
-                    var usuario = conexion2.QuerySingleOrDefault<Usuario>(comando, new { Id = _id });
-
-                    return usuario;
                 }
             }
 
