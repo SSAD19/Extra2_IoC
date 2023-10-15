@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "t6o5RjUELG0X4He73h2ZfxA6Gpam1BN5kHtJfvCZ+BrS4UDVYyqRNHw7I5vowvvnL34fPGywQZuBJzXt6+JmuQ==",
+  "dgSpecHash": "0SIRsMg4NGC0cFi309mm3OGMrfwjq3BP7otxLOSoKT9ivIJVyv4lJy7VOJpMAi3G2unA9PWhDAuBvUf3eIfT+g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dell\\source\\repos\\extradosClase4\\AccesoBase\\AccesoBase.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Dell\\.nuget\\packages\\autofac\\7.1.0\\autofac.7.1.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\dapper\\2.0.151\\dapper.2.0.151.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",

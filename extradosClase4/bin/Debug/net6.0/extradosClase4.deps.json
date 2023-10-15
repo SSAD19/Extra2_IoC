@@ -9,12 +9,24 @@
       "extradosClase4/1.0.0": {
         "dependencies": {
           "AccesoBase": "1.0.0",
+          "Autofac": "7.1.0",
           "Dapper": "2.0.151",
           "Entidades": "1.0.0",
           "MySql.Data": "8.1.0"
         },
         "runtime": {
           "extradosClase4.dll": {}
+        }
+      },
+      "Autofac/7.1.0": {
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "7.0.2"
+        },
+        "runtime": {
+          "lib/net6.0/Autofac.dll": {
+            "assemblyVersion": "7.1.0.0",
+            "fileVersion": "7.1.0.0"
+          }
         }
       },
       "Dapper/2.0.151": {
@@ -352,6 +364,7 @@
       },
       "AccesoBase/1.0.0": {
         "dependencies": {
+          "Autofac": "7.1.0",
           "Dapper": "2.0.151",
           "Entidades": "1.0.0",
           "MySql.Data": "8.1.0"
@@ -361,6 +374,9 @@
         }
       },
       "Entidades/1.0.0": {
+        "dependencies": {
+          "Autofac": "7.1.0"
+        },
         "runtime": {
           "Entidades.dll": {}
         }
@@ -372,6 +388,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Autofac/7.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XCXmpxhOnuztTTRkzG+8B8KU8SR8WjBYwSntndjlsFR5lM3K/g43r9hUwewIPDBJwDrmZU3TjmNdH6s8IF3VFQ==",
+      "path": "autofac/7.1.0",
+      "hashPath": "autofac.7.1.0.nupkg.sha512"
     },
     "Dapper/2.0.151": {
       "type": "package",

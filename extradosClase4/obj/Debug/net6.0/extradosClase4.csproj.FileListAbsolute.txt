@@ -47,3 +47,4 @@ C:\Users\Dell\source\repos\extradosClase4\extradosClase4\obj\Debug\net6.0\refint
 C:\Users\Dell\source\repos\extradosClase4\extradosClase4\obj\Debug\net6.0\extradosClase4.pdb
 C:\Users\Dell\source\repos\extradosClase4\extradosClase4\obj\Debug\net6.0\extradosClase4.genruntimeconfig.cache
 C:\Users\Dell\source\repos\extradosClase4\extradosClase4\obj\Debug\net6.0\ref\extradosClase4.dll
+C:\Users\Dell\source\repos\extradosClase4\extradosClase4\bin\Debug\net6.0\Autofac.dll

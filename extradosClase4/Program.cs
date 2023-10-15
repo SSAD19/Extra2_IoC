@@ -1,21 +1,110 @@
 ﻿using Entidades;
+using Autofac;
 using Dapper;
+using System.Linq;
 using AccesoBase;
 using System.Security.Cryptography.X509Certificates;
+using Org.BouncyCastle.Bcpg;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace extradosClase4
 {
     class Program 
     {
+
+        //Contenedor Autofac 
+        private static IContainer Contenedor() {
+            ContainerBuilder builder = new ContainerBuilder();
+            builder.RegisterType<AccesoDB>();
+            builder.RegisterType<UsuariosManager>().As<IUsuario>();
+
+            return builder.Build();
+
+        }
+
         static void Main(string[] args) 
         {
-             List<Usuario> variosUsuarios = new List<Usuario>();
+            // quiero traer un listado de usuario o UsuariosManager 
+            
+            Console.WriteLine("Práctica de Inyección de dependencias ");
+
+            List<IUsuario> _lista = new List<IUsuario>();
+            IUsuario userUso;
+
+            // AgregarUser();
+ 
+            ObtenerListado(_lista);
+
+            Console.WriteLine(_lista);
+
+            Console.WriteLine("funca o no funca? ");
+
+            void AgregarUser() {
+                string _nombre = null;
+                string _apellido =null;
+                int _edad = -1; 
+
+                do
+                {
+                    if (_nombre == null ) {
+                        Console.WriteLine("Indique nombre");
+                        _nombre = Console.ReadLine();
+                    }
+                    if (_apellido == null)
+                    {
+                        Console.WriteLine("Indique apellido");
+                        _apellido = Console.ReadLine();
+                    }
+                    if (_edad < 0) {
+                        Console.WriteLine("Indique edad");
+                        int.TryParse(Console.ReadLine(), out _edad);
+                    }
+                  
+                } while (string.IsNullOrEmpty(_nombre) || string.IsNullOrEmpty(_apellido) || _edad<0); 
+               
+
+                userUso = Contenedor().Resolve<IUsuario>().AgregarUno(_nombre, _apellido, _edad);
+                using (var conexion = new AccesoDB())
+                {
+                    Contenedor().Resolve<AccesoDB>().AgregarUno(userUso, conexion);
+                }
+                
+                Console.WriteLine($"El usuario {_nombre} fue cargado"); 
+
+            }
 
 
-            AgregarUsuario();
+            List<IUsuario> ObtenerListado(List<IUsuario> user)
+            {
+                using (var scope = Contenedor().BeginLifetimeScope())
+                {
+                    var conexion = scope.Resolve<AccesoDB>();
+                    return user = Contenedor().Resolve<AccesoDB>().ListarUsuario(conexion);
+                }
+            }
+          
+        }
+
+    }
+}
+
+/*
+ * 
+ * 
+ *  List<IUsuario> ObtenerListado()
+            {
+                
+                using (var conexion = new AccesoDB())
+                {
+                    return Contenedor().Resolve<AccesoDB>().ListarUsuario(conexion);
+                }
+            }
+
+        //Primer código que s ehizo para el DAO
+            List<Usuario> variosUsuarios = new List<Usuario>();
+
             AgregarUsuario();
            
-
             variosUsuarios = ListarUsuario();
 
             int i = 0; 
@@ -114,11 +203,4 @@ namespace extradosClase4
                 }
             }
 
-
-
-
-
-        }
-
-    }
-}
+ * */
