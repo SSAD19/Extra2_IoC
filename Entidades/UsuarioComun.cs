@@ -3,7 +3,7 @@
 
 namespace Entidades
 {
-    public class UsuarioComun : Usuario
+    public class UsuarioComun : Usuarios
     {
         public override IUsuario AgregarUno(string _nombre, string _apellido, int _edad)
         {

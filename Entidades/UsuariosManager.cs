@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class UsuariosManager : Usuario 
+    public class UsuariosManager : Usuarios 
     {
         public UsuariosManager(){  }
 
@@ -29,13 +29,3 @@ namespace Entidades
          
     }
 }
-
-/*
- *  public UsuariosManager(int _id, string _nombre, string _apellido,  bool _act)
-        {
-            Id = _id;
-            Nombre = _nombre;
-            Apellido = _apellido;
-            Activo = _act;
-        }
-*/
