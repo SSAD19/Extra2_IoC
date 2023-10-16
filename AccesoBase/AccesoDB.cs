@@ -5,17 +5,15 @@ using System.Data.Common;
 using System.Linq;
 using Entidades;
 using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace AccesoBase
 {
-    public class AccesoDB : IDisposable
+    public class AccesoDB : IDisposable, IAcceso
     {
-       // private IUsuario _userNuevo { get; set;}
-
-
         private IDbConnection dbConex;
         const string conexString = "Server=127.0.0.1;Database=ExtradosBootcamp; User=root;";
-
+        
        
         // metodo para abrir conexion
         public IDbConnection GetConnection()
@@ -49,28 +47,9 @@ namespace AccesoBase
             dbConex.Dispose();
         }
 
-        //consultar - recuperar datos 
-        public  List<IUsuario> ListarUsuario(AccesoDB conexion)
-        {
-            string comando = "select * from Usuario";
-            try
-            {
-                var conexion2 = conexion.GetConnection();
-               return conexion2.Query<IUsuario>(comando).ToList();
-            }
-            catch (Exception e) {
+        public void AgregarUno(IUsuario usuario, IAcceso conexion) {
 
-                 Console.WriteLine($"No se pudo recuperar el listado solicitado. ERROR: {e.Message}");
-
-                return new List<IUsuario>();
-            }
-            
-        }
-    
-
-        public void AgregarUno(IUsuario usuario, AccesoDB conexion) {
-
-        string comando = "INSERT INTO Usuario (nombre, apellido, edad, activo) VALUES (@Nombre, @Apellido, @Edad, @Activo)";
+        string comando = "INSERT INTO UsuariosManager (nombre, apellido, edad, activo) VALUES (@Nombre, @Apellido, @Edad, @Activo)";
 
         try {
             var conexion2 = conexion.GetConnection();
@@ -82,11 +61,32 @@ namespace AccesoBase
             Console.WriteLine($"No se pudo generar el alta. ERROR: {e.Message}");
         }
     }
-        
 
+        public List<IUsuario> ListarUsuario(IAcceso conexion)
+        {
+            string comando = "select * from UsuariosManager";
+            var lista = new List<IUsuario>();
+
+            try
+            {
+                var conexion2 = conexion.GetConnection();
+                var list =conexion2.Query<UsuariosManager>(comando).ToList();
+               
+                lista.AddRange(list.Cast<IUsuario>().ToList());
+
+                Console.WriteLine("Se recuperó la información correctamente.");
+               
+                return lista; 
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine($"No se pudo recuperar el listado solicitado. ERROR: {e.Message}");
+                return lista; 
+            }
+            
         }
-
-        //revisr 
-
+    }
 
   }
