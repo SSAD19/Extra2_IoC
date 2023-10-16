@@ -14,7 +14,9 @@ namespace extradosClase4
 
         //Contenedor Autofac 
         private static IContainer Contenedor() {
-            ContainerBuilder builder = new ContainerBuilder();
+
+            var builder = new ContainerBuilder();
+
             builder.RegisterType<AccesoDB>();
             builder.RegisterType<UsuariosManager>().As<IUsuario>();
 
@@ -25,19 +27,22 @@ namespace extradosClase4
         static void Main(string[] args) 
         {
             // quiero traer un listado de usuario o UsuariosManager 
-            
+            IUsuario user; 
+            var _contenedor = Contenedor();
+
             Console.WriteLine("Práctica de Inyección de dependencias ");
 
-            List<IUsuario> _lista = new List<IUsuario>();
-            IUsuario userUso;
+            //   AgregarUser();
 
-            // AgregarUser();
- 
-            ObtenerListado(_lista);
+            var listado = ObtenerListado(Contenedor().Resolve<IUsuario>().ObtenerListadodeUsuario());
 
-            Console.WriteLine(_lista);
+            Console.WriteLine(listado);
 
             Console.WriteLine("funca o no funca? ");
+            Console.ReadLine(); 
+
+
+
 
             void AgregarUser() {
                 string _nombre = null;
@@ -60,13 +65,15 @@ namespace extradosClase4
                         int.TryParse(Console.ReadLine(), out _edad);
                     }
                   
-                } while (string.IsNullOrEmpty(_nombre) || string.IsNullOrEmpty(_apellido) || _edad<0); 
-               
+                } while (string.IsNullOrEmpty(_nombre) || string.IsNullOrEmpty(_apellido) || _edad<0);
 
-                userUso = Contenedor().Resolve<IUsuario>().AgregarUno(_nombre, _apellido, _edad);
-                using (var conexion = new AccesoDB())
+                using (var scope = Contenedor().BeginLifetimeScope()) {
+                    user = Contenedor().Resolve<IUsuario>().AgregarUno(_nombre, _apellido, _edad);
+                }
+                using (var conexion = Contenedor().Resolve<AccesoDB>())
                 {
-                    Contenedor().Resolve<AccesoDB>().AgregarUno(userUso, conexion);
+                   
+                    Contenedor().Resolve<AccesoDB>().AgregarUno(user, conexion);
                 }
                 
                 Console.WriteLine($"El usuario {_nombre} fue cargado"); 
@@ -74,12 +81,11 @@ namespace extradosClase4
             }
 
 
-            List<IUsuario> ObtenerListado(List<IUsuario> user)
+            List<IUsuario> ObtenerListado(List<IUsuario> lista)
             {
-                using (var scope = Contenedor().BeginLifetimeScope())
+                using (var conexion = Contenedor().Resolve<AccesoDB>())
                 {
-                    var conexion = scope.Resolve<AccesoDB>();
-                    return user = Contenedor().Resolve<AccesoDB>().ListarUsuario(conexion);
+                    return lista = Contenedor().Resolve<AccesoDB>().ListarUsuario(conexion);
                 }
             }
           
